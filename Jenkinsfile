@@ -78,38 +78,38 @@ pipeline {
       }
   }
 }
-def notifyStarted() {
-mattermostSend (
-  color: "#2A42EE",
-  channel: 'ekcms-ver7-ver8',
-  endpoint: 'https://ekbana.letsperk.com/hooks/f8mxssqga7rn983duwfrg1hxze',
-  message: "Build STARTED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
-  )
-}
+// def notifyStarted() {
+// mattermostSend (
+//   color: "#2A42EE",
+//   channel: 'ekcms-ver7-ver8',
+//   endpoint: 'https://ekbana.letsperk.com/hooks/f8mxssqga7rn983duwfrg1hxze',
+//   message: "Build STARTED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
+//   )
+// }
 
-def notifySuccessful() {
-mattermostSend (
-  color: "#00f514",
-  channel: 'ekcms-ver7-ver8',
-  endpoint: 'https://ekbana.letsperk.com/hooks/f8mxssqga7rn983duwfrg1hxze',
-  message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>):\n${changeLog}"
-  )
-}
+// def notifySuccessful() {
+// mattermostSend (
+//   color: "#00f514",
+//   channel: 'ekcms-ver7-ver8',
+//   endpoint: 'https://ekbana.letsperk.com/hooks/f8mxssqga7rn983duwfrg1hxze',
+//   message: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>):\n${changeLog}"
+//   )
+// }
 
-def notifyFailed() {
-mattermostSend (
-  color: "#e00707",
-  channel: 'ekcms-ver7-ver8',
-  endpoint: 'https://ekbana.letsperk.com/hooks/f8mxssqga7rn983duwfrg1hxze',
-  message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
-  )
-}
-def lastSuccessfulBuild(passedBuilds, build) {
-  if ((build != null) && (build.result != 'SUCCESS')) {
-      passedBuilds.add(build)
-      lastSuccessfulBuild(passedBuilds, build.getPreviousBuild())
-   }
-}
+// def notifyFailed() {
+// mattermostSend (
+//   color: "#e00707",
+//   channel: 'ekcms-ver7-ver8',
+//   endpoint: 'https://ekbana.letsperk.com/hooks/f8mxssqga7rn983duwfrg1hxze',
+//   message: "Build FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Link to build>)"
+//   )
+// }
+// def lastSuccessfulBuild(passedBuilds, build) {
+//   if ((build != null) && (build.result != 'SUCCESS')) {
+//       passedBuilds.add(build)
+//       lastSuccessfulBuild(passedBuilds, build.getPreviousBuild())
+//    }
+// }
 
 @NonCPS
 def getChangeLog(passedBuilds) {

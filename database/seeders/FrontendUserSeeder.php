@@ -17,9 +17,9 @@ class FrontendUserSeeder extends Seeder
     {
         FrontendUser::truncate();
         FrontendUser::create([
-            'name' => 'pramesh',
-            'username' => 'pramesh',
-            'email' => 'prmshzk+2@gmail.com',
+            'name' => 'binaya',
+            'username' => 'binaya',
+            'email' => 'binaya+2@gmail.com',
             'password' => Hash::make('password'),
         ]);
     }

@@ -15,7 +15,7 @@ class EmailTemplateSeeder extends Seeder
      */
     public function run()
     {
-        $fromEmail = env('MAIL_FROM_ADDRESS') ?? 'info@ekbana.com';
+        $fromEmail = env('MAIL_FROM_ADDRESS') ?? 'info@Binaya.com';
         /**
          * Template for table header.
          */
@@ -40,7 +40,7 @@ class EmailTemplateSeeder extends Seeder
         $templateFooter = '<p>Thank you!</p>
                                             <br>
                                             <p class="pull-right">Yours Sincerely,<br>
-                                                Team EKbana</p>
+                                                Team Binaya</p>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -54,10 +54,10 @@ class EmailTemplateSeeder extends Seeder
                         <table border="0" cellspacing="0" cellpadding="0">
                             <tbody>
                             <tr>
-                                <td class="content-block"><span class="apple-link">Ekbana</span></td>
+                                <td class="content-block"><span class="apple-link">Binaya</span></td>
                             </tr>
                             <tr>
-                                <td class="content-block powered-by">Powered by Ekbana</td>
+                                <td class="content-block powered-by">Powered by Binaya</td>
                             </tr>
                             </tbody>
                         </table>
@@ -78,21 +78,26 @@ class EmailTemplateSeeder extends Seeder
                     [
                         'language_code' => 'en',
                         'subject' => 'Account has been created in ekcms',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                     <p>Dear %user_name%,</p>
                     <p>Your account has been created in ekcms. Please contact admin to get your credential.</p>                                     
-                    '.$templateFooter,
+                    ' .
+                            $templateFooter,
                     ],
                     [
                         'language_code' => 'ja',
                         'subject' => 'Account has been created in ekcms',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                         <p>Dear %user_name%,</p>
                         <p>Your account has been created in ekcms. Please contact admin to get your credential.</p>                                     
-                        '.$templateFooter,
+                        ' .
+                            $templateFooter,
                     ],
                 ],
-
             ],
             [
                 'title' => 'Password Set Link Email',
@@ -102,23 +107,28 @@ class EmailTemplateSeeder extends Seeder
                     [
                         'language_code' => 'en',
                         'subject' => 'Password set link',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                         <p>Dear %user_name%,</p>
                         <p>Your account has been created in ekcms. Please click the link below to set your password.</p>
                         <p>Link : %password_set_link%</p>                                
-                            '.$templateFooter,
+                            ' .
+                            $templateFooter,
                     ],
                     [
                         'language_code' => 'ja',
                         'subject' => 'Password set link',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                         <p>Dear %user_name%,</p>
                         <p>Your account has been created in ekcms. Please click the link below to set your password.</p>
                         <p>Link : %password_set_link%</p>                                
-                            '.$templateFooter,
+                            ' .
+                            $templateFooter,
                     ],
                 ],
-
             ],
             [
                 'title' => 'Password ResetLink Email',
@@ -128,23 +138,28 @@ class EmailTemplateSeeder extends Seeder
                     [
                         'language_code' => 'en',
                         'subject' => 'Password Reset Link',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                                         <p>Dear %user_name%,</p>
                                         <p>As per your request we have generated a password reset link. Please click the link below to reset your password.</p>
                                         <p>Link : %password_reset_link%</p>                                
-                                            '.$templateFooter,
+                                            ' .
+                            $templateFooter,
                     ],
                     [
                         'language_code' => 'ja',
                         'subject' => 'Password Reset Link',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                                         <p>Dear %user_name%,</p>
                                         <p>As per your request we have generated a password reset link. Please click the link below to reset your password.</p>
                                         <p>Link : %password_reset_link%</p>                               
-                                            '.$templateFooter,
+                                            ' .
+                            $templateFooter,
                     ],
                 ],
-
             ],
             [
                 'title' => 'Two Factor Authentication Email',
@@ -154,23 +169,28 @@ class EmailTemplateSeeder extends Seeder
                     [
                         'language_code' => 'en',
                         'subject' => 'Verification Code',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                                 <p>Dear %user_name%,</p>
                                 <p>Please copy the verification code below.</p>
                                 <p>Code : %verification_code%</p>                                
-                                    '.$templateFooter,
+                                    ' .
+                            $templateFooter,
                     ],
                     [
                         'language_code' => 'ja',
                         'subject' => 'Verification Code',
-                        'template' => $templateHeader.'                         
+                        'template' =>
+                            $templateHeader .
+                            '                         
                                 <p>Dear %user_name%,</p>
                                 <p>Please copy the verification code below.</p>
                                 <p>Code : %verification_code%</p>                           
-                                    '.$templateFooter,
+                                    ' .
+                            $templateFooter,
                     ],
                 ],
-
             ],
         ];
         \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -181,7 +201,6 @@ class EmailTemplateSeeder extends Seeder
                 'title' => $template['title'],
                 'code' => $template['code'],
                 'from' => $template['from'],
-
             ];
             $email = EmailTemplate::create($data);
             $email->emailTranslations()->createMany($template['translations']);
