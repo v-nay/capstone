@@ -2,14 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
+use App\Http\BrowserDetection;
 use Carbon\Carbon;
+use Closure;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Route;
-
-use App\Http\BrowserDetection;
 use Illuminate\Support\Facades\Auth;
-
 use League\OAuth2\Server\ResourceServer;
 
 class LogMiddleware
@@ -18,7 +16,7 @@ class LogMiddleware
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  Closure  $next
      * @return mixed
      */
     public function __construct(Route $route, ResourceServer $server)
@@ -42,7 +40,7 @@ class LogMiddleware
                 $absUrl = $this->route->uri();
 
                 if ($absUrl[0] != '/' && $url[0] == '/') {
-                    $absUrl = '/' . $absUrl;
+                    $absUrl = '/'.$absUrl;
                 }
 
                 $type = 'web';
@@ -97,16 +95,16 @@ class LogMiddleware
                 ];
 
                 $today = Carbon::today()->toDateString();
-                $logs_path = storage_path() . '/logs/ai' . '/' . $today . '.log';
+                $logs_path = storage_path().'/logs/ai'.'/'.$today.'.log';
                 $data['data'] = [];
 
-                if (is_dir(storage_path() . '/logs/ai') != true) {
-                    \File::makeDirectory(storage_path() . '/logs/ai', $mode = 0755, true);
+                if (is_dir(storage_path().'/logs/ai') != true) {
+                    \File::makeDirectory(storage_path().'/logs/ai', $mode = 0755, true);
                 }
-                if (! \File::exists(storage_path() . '/logs/ai')) {
+                if (! \File::exists(storage_path().'/logs/ai')) {
                     \File::put($logs_path, json_encode($logData, JSON_UNESCAPED_SLASHES));
                 } else {
-                    \File::append($logs_path, PHP_EOL . json_encode($logData, JSON_UNESCAPED_SLASHES));
+                    \File::append($logs_path, PHP_EOL.json_encode($logData, JSON_UNESCAPED_SLASHES));
                 }
             } catch (\Exception $e) {
                 \Log::error("error in logger $e");

@@ -19,7 +19,7 @@ function hasPermission($url, $method = 'get')
         $permissionDeniedToSuperUserRoutes = Config::get('cmsConfig.permissionDeniedToSuperUserRoutes');
         $checkDeniedRoute = true;
         foreach ($permissionDeniedToSuperUserRoutes as $route) {
-            if (\Str::is($route['url'], $url) && $route['method'] == $method) {
+            if (Str::is($route['url'], $url) && $route['method'] == $method) {
                 $checkDeniedRoute = false;
             }
         }
@@ -32,7 +32,7 @@ function hasPermission($url, $method = 'get')
     $check = false;
 
     foreach ($permissionIgnoredUrls as $piurl) {
-        if (\Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
+        if (Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
             $check = true;
         }
     }
@@ -47,7 +47,7 @@ function hasPermission($url, $method = 'get')
     }
 
     foreach ($permissions as $piurl) {
-        if (\Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
+        if (Str::is($piurl['url'], $url) && $piurl['method'] == $method) {
             $check = true;
         }
     }
@@ -71,7 +71,7 @@ function hasPermissionOnModule($module)
                     break;
                 }
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }

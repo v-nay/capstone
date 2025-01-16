@@ -12,7 +12,7 @@ trait CustomThrottleRequest
     /**
      * Determine if the user has too many failed login attempts.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return bool
      */
     protected function hasTooManyAttempts(Request $request, $attempt = 5)
@@ -26,7 +26,7 @@ trait CustomThrottleRequest
     /**
      * Increment the login attempts for the user.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return void
      */
     protected function incrementAttempts(Request $request, $minutes = 1)
@@ -40,7 +40,7 @@ trait CustomThrottleRequest
     /**
      * Redirect the user after determining they are locked out.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -57,7 +57,7 @@ trait CustomThrottleRequest
     /**
      * Clear the login locks for the given user credentials.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return void
      */
     protected function clearAttempts(Request $request)
@@ -68,7 +68,7 @@ trait CustomThrottleRequest
     /**
      * Fire an event when a lockout occurs.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return void
      */
     protected function customFireLockoutEvent(Request $request)
@@ -79,7 +79,7 @@ trait CustomThrottleRequest
     /**
      * Get the throttle key for the given request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @return string
      */
     protected function customThrottleKey(Request $request)
@@ -92,7 +92,7 @@ trait CustomThrottleRequest
     /**
      * Get the rate limiter instance.
      *
-     * @return \Illuminate\Cache\RateLimiter
+     * @return RateLimiter
      */
     protected function customlimiter()
     {

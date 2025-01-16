@@ -11,7 +11,7 @@ Route::get(PREFIX, function () {
     return redirect(route('login.form'));
 });
 
-Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['language','pinewheel-log']], function () {
+Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['language', 'pinewheel-log']], function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login.form');
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     Route::get('forgot-password', 'Auth\ForgotPasswordController@showRequestForm')->name('forgot.password');
@@ -22,7 +22,6 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
     Route::post('/set-password', 'Auth\ResetPasswordController@handleSetResetPassword');
     Route::get('/', 'Auth\LoginController@showLoginForm');
     Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-    
 
     Route::group(['middleware' => ['auth', 'antitwofa']], function () {
         Route::get('/login/verify', 'Auth\VerificationController@showVerifyPage');
@@ -71,9 +70,5 @@ Route::group(['namespace' => 'System', 'prefix' => PREFIX, 'middleware' => ['lan
         Route::post('/mail-test', 'MailTestController@sendEmail');
         Route::get('/search-motels', 'google\GoogleController@searchMotels');
         Route::get('/search-motels-by-suburb', 'google\GoogleController@searchAllMotels');
-        
-
-        
     });
-
 });

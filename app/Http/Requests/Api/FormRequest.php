@@ -14,7 +14,7 @@ class FormRequest extends IlluminateFormRequest
     /**
      * Handle a failed validation attempt.
      *
-     * @param \Illuminate\Contracts\Validation\Validator $validator
+     * @param Validator $validator
      *
      * @return void
      */

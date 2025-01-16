@@ -16,14 +16,14 @@ class PassportUserRepository implements UserRepositoryInterface
     /**
      * The hasher implementation.
      *
-     * @var \Illuminate\Contracts\Hashing\Hasher
+     * @var Hasher
      */
     protected $hasher;
 
     /**
      * Create a new repository instance.
      *
-     * @param  \Illuminate\Contracts\Hashing\Hasher  $hasher
+     * @param  Hasher  $hasher
      * @return void
      */
     public function __construct(Hasher $hasher)

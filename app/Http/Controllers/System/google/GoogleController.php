@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\System\google;
-use App\Services\System\GoogleService;
+
 use App\Http\Controllers\System\ResourceController;
+use App\Services\System\GoogleService;
 use Illuminate\Http\Request;
 
 class GoogleController extends ResourceController
@@ -21,9 +22,14 @@ class GoogleController extends ResourceController
     {
         return 'system.google';
     }
+
     public function searchMotels(Request $request)
     {
+<<<<<<< HEAD
         $city = $request->get('city', 'Australia');
+=======
+        $city = $request->get('city', 'New York');
+>>>>>>> d33b64dbcada94c9c1c5d1d6b0d5971ce19d5409
         $location = $request->get('location', '40.712776,-74.005974'); // Example for New York
         $radius = $request->get('radius', 5000); // Default to 5 km
 
@@ -35,6 +41,7 @@ class GoogleController extends ResourceController
 
         return response()->json($results);
     }
+
     public function searchAllMotels(Request $request)
     {
         $suburb = $request->get('suburb', 'Hornsby');
@@ -45,11 +52,15 @@ class GoogleController extends ResourceController
             $location = $this->googleService->getSuburbLocation($suburb);
 
             // Fetch all motels using pagination
+<<<<<<< HEAD
             $results = $this->googleService->searchPlacesWithPagination(
                 'motels',
                 $location,
                 $radius
             );
+=======
+            $results = $this->googleService->searchPlacesWithPagination('motels', $location, $radius);
+>>>>>>> d33b64dbcada94c9c1c5d1d6b0d5971ce19d5409
 
             return response()->json($results);
         } catch (\Exception $e) {

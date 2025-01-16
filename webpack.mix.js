@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .vue()
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.js('resources/asset/system/js/system.js', 'public/compiledCssAndJs/js/')
@@ -19,3 +20,15 @@ mix.js('resources/asset/system/js/system.js', 'public/compiledCssAndJs/js/')
     .options({
         processCssUrls: false,
     });
+
+// mix.webpackConfig({
+//     stats: {
+//         modules: false, // Hide module details
+//         children: false, // Hide child compilations
+//         entrypoints: false, // Hide entry point details
+//         assets: true, // Show assets
+//         timings: true, // Show timings
+//         version: true, // Show Webpack version
+//         colors: true, // Enable colors in the output
+//     },
+// });

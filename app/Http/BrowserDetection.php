@@ -1,4 +1,5 @@
 <?php
+
 /**
 * PHP Browser Detection Class.
 *
@@ -33,28 +34,51 @@ namespace App\Http;
 class BrowserDetection
 {
     public $useragent;
+
     private $get_mode;
+
     private $touch_support_mode;
+
     private $real_os_name;
+
     private $result_ios;
+
     private $result_mobile;
+
     private $result_os_type;
+
     private $result_os_family;
+
     private $result_os_name;
+
     private $result_os_version;
+
     private $result_os_title;
+
     private $result_device_type;
+
     private $result_browser_name;
+
     private $result_browser_version;
+
     private $result_browser_title;
+
     private $result_browser_chromium_version;
+
     private $result_browser_gecko_version;
+
     private $result_browser_webkit_version;
+
     private $result_browser_chrome_original;
+
     private $result_browser_firefox_original;
+
     private $result_browser_safari_original;
+
     private $result_browser_android_webview;
+
     private $result_browser_ios_webview;
+
     private $result_browser_desktop_mode;
 
     /**
@@ -356,23 +380,40 @@ class BrowserDetection
 
                     if (! empty($version_minor) && $version == 10) {
                         switch ($version_minor) {
-                            case 0: $this->result_os_version = 'Cheetah'; break;
-                            case 1: $this->result_os_version = 'Puma'; break;
-                            case 2: $this->result_os_version = 'Jaguar'; break;
-                            case 3: $this->result_os_version = 'Panther'; break;
-                            case 4: $this->result_os_version = 'Tiger'; break;
-                            case 5: $this->result_os_version = 'Leopard'; break;
-                            case 6: $this->result_os_version = 'Snow Leopard'; break;
-                            case 7: $this->result_os_version = 'Lion'; break;
-                            case 8: $this->result_os_version = 'Mountain Lion'; break;
-                            case 9: $this->result_os_version = 'Mavericks'; break;
-                            case 10: $this->result_os_version = 'Yosemite'; break;
-                            case 11: $this->result_os_version = 'El Capitan'; break;
-                            case 12: $this->result_os_version = 'Sierra'; break;
-                            case 13: $this->result_os_version = 'High Sierra'; break;
-                            case 14: $this->result_os_version = 'Mojave'; break;
-                            case 15: $this->result_os_version = 'Catalina'; break;
-                            default: $this->result_os_version = 'New'; break;
+                            case 0: $this->result_os_version = 'Cheetah';
+                                break;
+                            case 1: $this->result_os_version = 'Puma';
+                                break;
+                            case 2: $this->result_os_version = 'Jaguar';
+                                break;
+                            case 3: $this->result_os_version = 'Panther';
+                                break;
+                            case 4: $this->result_os_version = 'Tiger';
+                                break;
+                            case 5: $this->result_os_version = 'Leopard';
+                                break;
+                            case 6: $this->result_os_version = 'Snow Leopard';
+                                break;
+                            case 7: $this->result_os_version = 'Lion';
+                                break;
+                            case 8: $this->result_os_version = 'Mountain Lion';
+                                break;
+                            case 9: $this->result_os_version = 'Mavericks';
+                                break;
+                            case 10: $this->result_os_version = 'Yosemite';
+                                break;
+                            case 11: $this->result_os_version = 'El Capitan';
+                                break;
+                            case 12: $this->result_os_version = 'Sierra';
+                                break;
+                            case 13: $this->result_os_version = 'High Sierra';
+                                break;
+                            case 14: $this->result_os_version = 'Mojave';
+                                break;
+                            case 15: $this->result_os_version = 'Catalina';
+                                break;
+                            default: $this->result_os_version = 'New';
+                                break;
                         }
                     }
 

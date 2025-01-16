@@ -12,7 +12,7 @@ trait ImageTrait
     {
         $directory = public_path().$dir;
         if (is_dir($directory) != true) {
-            \File::makeDirectory($directory, $mode = 0755, true);
+            File::makeDirectory($directory, $mode = 0755, true);
         }
         $fileName = uniqid().'.'.Request::file($input)->getClientOriginalExtension();
         $image = Image::make(Request::file($input));
