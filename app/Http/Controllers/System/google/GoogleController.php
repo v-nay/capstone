@@ -25,11 +25,7 @@ class GoogleController extends ResourceController
 
     public function searchMotels(Request $request)
     {
-<<<<<<< HEAD
-        $city = $request->get('city', 'Australia');
-=======
         $city = $request->get('city', 'New York');
->>>>>>> d33b64dbcada94c9c1c5d1d6b0d5971ce19d5409
         $location = $request->get('location', '40.712776,-74.005974'); // Example for New York
         $radius = $request->get('radius', 5000); // Default to 5 km
 
@@ -52,15 +48,11 @@ class GoogleController extends ResourceController
             $location = $this->googleService->getSuburbLocation($suburb);
 
             // Fetch all motels using pagination
-<<<<<<< HEAD
             $results = $this->googleService->searchPlacesWithPagination(
                 'motels',
                 $location,
                 $radius
             );
-=======
-            $results = $this->googleService->searchPlacesWithPagination('motels', $location, $radius);
->>>>>>> d33b64dbcada94c9c1c5d1d6b0d5971ce19d5409
 
             return response()->json($results);
         } catch (\Exception $e) {

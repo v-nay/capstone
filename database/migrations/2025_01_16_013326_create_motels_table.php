@@ -26,6 +26,13 @@ class CreateMotelsTable extends Migration
             $table->string('website')->nullable();
             $table->string('phone')->nullable();
             $table->string('postal_code')->nullable();
+            $table->float('rating_score')->nullable();
+            $table->float('userRating_score')->nullable();
+            $table->float('photo_score')->nullable();
+            $table->float('website_score')->nullable();
+            $table->float('avg_score')->nullable();
+            $table->integer('rank')->nullable();
+
             $table->timestamps();
         });
     }
